@@ -52,6 +52,7 @@
   </div>
 
   <div class="row">
+    <p class="col-2">パスワード</p>
     <div class="field">
       <%= f.label :password %>
       <% if @minimum_password_length %>
@@ -62,16 +63,18 @@
   </div>
 
   <div class="row">
+    <p class="col-2">パスワード</p>
     <div class="field">
       <%= f.label :password_confirmation %><br />
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
   </div>
 
-    <div class="actions">
-      <%= f.submit "Sign up" %>
+    <div class="actions d-grid">
+      <%= f.submit "新規登録", class:"btn btn-success" %>
     </div>
 </div>
 <% end %>
 
-<%= render "public/shared/links" %>
+<h5>既に登録済みの方</h5>
+ <a href="sign_in">こちら</a>からログインしてください。
