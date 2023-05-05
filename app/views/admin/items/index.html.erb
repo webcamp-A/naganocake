@@ -1,1 +1,21 @@
 <h1>admin item index</h1>
+<a href="items/new">商品追加</a>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">商品ID</th>
+      <th scope="col">商品名</th>
+      <th scope="col">税抜価格</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <% @items.each do |item| %>
+      <th scope="row"><%= item.id %></th>
+      <td><%= item.name %></td>
+      <td><%= item.price %></td>
+    <% end %>
+    </tr>
+  </tbody>
+</table>

@@ -1,29 +1,23 @@
-<h2>ログイン</h2>
-
 <div class="container">
-  <div class="row">
-    <div class="mx-auto">
-
+    <div>
+      <h4>管理者ログイン</h4>
+      
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="field">
-          <%= f.label :"メールアドレス",class:"col-auto" %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <div class="offset-3">
+        <div class="field row mb-3">
+          <%= f.label :"メールアドレス",class:"col-2 col-form-label" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"col-4" %>
         </div>
 
-        <div class="field">
-          <%= f.label :"パスワード", class:"col-auto" %>
-          <%= f.password_field :password, autocomplete: "current-password" %>
+        <div class="field row mb-3">
+          <%= f.label :"パスワード", class:"col-2 col-form-label" %>
+          <%= f.password_field :password, autocomplete: "current-password", class:"col-4" %>
         </div>
 
-        <div class="actions">
+        <div class="actions d-grid offset-2">
           <%= f.submit "ログイン", class:"btn btn-primary" %>
         </div>
+      </div>  
       <% end %>
     </div>
-  </div>
 </div>
-
-<h5>会員登録がお済でない方</h5>
-  <%= link_to 'こちら', new_customer_registration_path %>から新規登録を行ってください。
-
-<%= render "admin/shared/links" %>

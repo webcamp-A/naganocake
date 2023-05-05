@@ -1,0 +1,15 @@
+<div class="container">
+  
+  <% @items.each do |item| %>
+    <div class="col-3">
+      <%= image_tag item.get_image %>
+    </div>
+    
+    <div class="col-4">
+      <%= item.name %>
+      <%= item.introduction %>
+      <%= item.price %>
+    </div>
+  <% end %>
+  
+</div>

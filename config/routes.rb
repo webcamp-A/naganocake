@@ -18,11 +18,13 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    resources :items,:customers,:cart_items,:orders
+    resources :items, only: [:index,:show]
+    resources :customers,:cart_items,:orders
   end
 
   root to:'public/homes#top'
   get 'about' => 'public/homes#about'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
 end
