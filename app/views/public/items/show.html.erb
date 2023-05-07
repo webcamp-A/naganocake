@@ -1,15 +1,13 @@
 <div class="container">
-  
-  <% @items.each do |item| %>
+  <div class="row">
     <div class="col-3">
-      <%= image_tag item.get_image %>
+      <%= image_tag @item.get_image,size:"200x150" %>
     </div>
-    
-    <div class="col-4">
-      <%= item.name %>
-      <%= item.introduction %>
-      <%= item.price %>
-    </div>
-  <% end %>
   
+    <div class="col-4">
+      <%= @item.name %><br>
+      <%= @item.introduction %><br>
+      <%= @item.price %>
+    </div>
+  </div>
 </div>

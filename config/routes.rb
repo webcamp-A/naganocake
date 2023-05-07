@@ -19,11 +19,14 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resources :items, only: [:index,:show]
-    resources :customers,:cart_items,:orders
+    resources :cart_items,:orders
+    resources :customers,except:[:index]
   end
 
   root to:'public/homes#top'
   get 'about' => 'public/homes#about'
+  get 'customers' => 'public/customers#show'
+  get 'withdrawal' => 'puclic/customers#withdrawal'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   

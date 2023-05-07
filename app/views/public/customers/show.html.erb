@@ -1,1 +1,47 @@
-<h1>Show</h1>
+<div class="container">
+  <h4>マイページ</h4>
+
+
+  <div class="row">
+    <h5>登録情報</h5>
+    <a class="btn btn-primary" href="/customers/edit" role="button">編集する</a>
+  
+    <table class="table table-bordered">
+      <tbody>
+        <% @customers.each do |customer| %>
+        <tr>
+          <td scope="col-2">氏名</th>
+          <td scope="col-4"><%= customer.last_name %><%= customer.first_name %></th>
+        </tr>
+        <tr>
+          <td scope="col-2">カナ</td>
+          <td scope="col-4"><%= customer.last_name_kana %><%= customer.first_name_kana %></td>
+        </tr>
+        <tr>
+          <td scope="col-2">郵便番号</td>
+          <td scope="col-4"><%= customer.postal_code %></td>
+        </tr>
+        <tr>
+          <td scope="col-2">住所</td>
+          <td scope="col-6"><%= customer.address %></td>
+        </tr>
+        <tr>
+          <td scope="col-2">電話番号</td>
+          <td scope="col-4"><%= customer.telephone_number %></td>
+        </tr>
+        <tr>
+          <td scope="col-2">メールアドレス</td>
+          <td scope="col-4"><%= customer.email %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  
+  </div>
+
+  <div class="row">
+    <h5>注文履歴</h5>
+    <a class="btn btn-success" href="/orders" role="button">一覧を見る</a>
+  </div>
+
+</div>
