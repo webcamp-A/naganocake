@@ -1,6 +1,6 @@
 <div class="container">
-  <h4>会員情報編集</h4>
-  <%= form_with model:@customers, url:customer_registration_path do |f| %>
+  <h4>public会員情報編集</h4>
+  <%= form_with model:@customers, url:edit_customer_path do |f| %>
   
   <div class="row">
     <label class="col-2">氏名</label>

@@ -1,0 +1,68 @@
+<div class="container">
+  <h4>注文履歴詳細</h4>
+  <div class="row">
+    <div class="col-5">
+      <h5>注文情報</h5>
+      <% @orders.each do |order| %>
+      <table>
+        <tbody>
+          <tr>
+            <th scope="col-1">注文日</th>
+            <td scope="col-4"><%= order.create_at %></td>
+          </tr>
+          <tr>
+            <th scope="col-1">配送先</th>
+            <td scope="col-4">
+              <%= order.post_code %><br>
+              <%= order.address %>
+            </td>
+          </tr>
+          <tr>
+            <th scope="col-1">支払方法</th>
+            <td scope="col-4"><%= order.payment_method %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-5">
+      <h5>請求情報</h5>
+      <table>
+        <tbody>
+          <tr>
+            <th scope="col-1">商品合計</th>
+            <td scope="col-1"></td>
+          </tr>
+          <tr>
+            <th scope="col-1">配送料</th>
+            <td scope="col-1"><%= order.payment %></td>
+          </tr>
+          <tr>
+            <th scope="col-1">ご請求額</th>
+            <td scope="col-1"></td>
+          </tr>
+        </tbody>
+      </table>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <h5>注文内容</h5>
+    <table>
+      <tbody>
+        <tr>
+          <th scope="col-4">商品</th>
+          <th scope="col-2">単価（税込）</th>
+          <th scope="col-1">個数</th>
+          <th scope="col-1">小計</th>
+        </tr>
+        <tr>
+          <td scope="col-4"></td>
+          <td scope="col-2"></td>
+          <td scope="col-1"></td>
+          <td scope="col-1"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

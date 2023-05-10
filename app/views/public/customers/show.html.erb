@@ -4,7 +4,9 @@
 
   <div class="row">
     <h5>登録情報</h5>
-    <a class="btn btn-primary" href="/customers/edit" role="button">編集する</a>
+    <%= link_to edit_customer_path do %>
+      <button class="btn btn-primary">編集する</button>
+    <% end %>
   
     <table class="table table-bordered">
       <tbody>

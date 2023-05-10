@@ -26,8 +26,9 @@ Rails.application.routes.draw do
   root to:'public/homes#top'
   get 'about' => 'public/homes#about'
   get 'customers' => 'public/customers#show'
-  get 'withdrawal' => 'puclic/customers#withdrawal'
-
+  get 'withdrawal' => 'public/customers#withdrawal'
+  post 'orders/confirmation' => 'public/orders#confirmation'
+  get 'orders/completion' => 'public/orders#completion'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   
 end
