@@ -1,5 +1,6 @@
 <div class="container">
   <h4>ショッピングカート</h4>
+  <%= link_to "カートを空にする", all_destroy_cart_items_path, method: :delete, class:"btn btn-danger btn-sm" %>
   <div class="row">
     <table>
       <thead>
@@ -12,20 +13,31 @@
         </tr>
       </thead>
       <tbody>
+        <% @total %>
+      <% if current_customer.cart_items.present? %>
+        <% @cart_items.each do |cart_item| %>
         <tr>
-          <td scope="col"></td>
-          <td scope="col"></td>
-          <td scope="col"></td>
-          <td scope="col"></td>
-          <td scope="col"></td>
+          <td scope="col">
+            <%= image_tag(cart_item.item.image, size:"60x50", fallback: "noimage.jpg") %>
+            <%= cart_item.item.name %>
+          </td>
+          <td scope="col"><%= (cart_item.item.price*1.10).to_i %></td>
+          <td scope="col">
+            <%= form_with model:cart_item, url: cart_item_path(cart_item), local: true, method: :patch do |f| %>
+              <%= f.number_field :amount, min:1, max:10, id:"amount_cart" %>
+              <%= f.submit "変更", class:"btn btn-success" %>
+            <% end %>
+          </td>
+          <td scope="col"><%= (cart_item.subtotal).to_i %></td>
+          <td scope="col"><%= link_to '削除する', cart_item_path(cart_item.id,cart_item), method: :delete, class:"btn btn-danger" %></td>
         </tr>
+          <% @total += cart_item.subtotal %>
+        <% end %>
+      <% end %>
+        
+          <%= @total.to_i %>
+        
       </tbody>
     </table>
-  </div>
-  
-  <div class="row">
-  </div>
-  
-  <div class="row">
   </div>
 </div>

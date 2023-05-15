@@ -1,7 +1,7 @@
 <div class="container">
 
-  <h4><%= @customer.last_name %>さんの会員詳細</h4>
-  
+  <h4><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h4>
+
   <div class="row">
     <label class="col-2">会員ID</label>
     <div class="col-4">
@@ -11,13 +11,13 @@
   <div class="row">
     <label class="col-2">氏名</label>
     <div class="col-4">
-      <%= @customer.lase_name %> <%= @customer.first_name %>
+      <%= @customer.last_name %>  <%= @customer.first_name %>
     </div>
   </div>
   <div class="row">
     <label class="col-2">フリガナ</label>
     <div class="col-4">
-      <%= @customer.last_name_kana %><%= @customer.first_name_kana %>
+      <%= @customer.last_name_kana %>  <%= @customer.first_name_kana %>
     </div>
   </div>
   <div class="row">
@@ -28,7 +28,9 @@
   </div>
   <div class="row">
     <label class="col-2">住所</label>
-    <%= @customer.address %>
+    <div class="col-4">
+      <%= @customer.address %>
+      </div>
   </div>
   <div class="row">
     <label class="col-2">電話番号</label>
@@ -42,5 +44,15 @@
       <%= @customer.email %>
     </div>
   </div>
-  
+  <div class="row">
+    <label class="col-2">会員ステータス</label>
+    <div class="col-4">
+      
+    </div>
+  </div>
+  <%= link_to edit_admin_customer_path(@customer.id) do %>
+    <div class="offset-2 col-1 btn btn-success">編集する</div>
+  <% end %>
+  <div class="offset-1 col- btn btn-primary">注文履歴一覧を見る</div>
+
 </div>

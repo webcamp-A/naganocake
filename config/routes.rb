@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # URL /customers/sign_in...
   devise_for :customers,skip: [:passwords], controllers: {
     registrations: "public/registrations",
-    sessions: "admin/sessions"
+    sessions: "public/sessions"
   }
 
   # 管理者用
@@ -19,8 +19,13 @@ Rails.application.routes.draw do
 
   scope module: :public do
     resources :items, only: [:index,:show]
-    resources :cart_items,:orders
-    resources :customers,except:[:index]
+    resources :orders
+    resources :customers, except:[:index]
+    resources :cart_items, only: [:index,:create,:update,:destroy] do
+      collection do
+        delete "all_destroy"
+      end
+    end
   end
 
   root to:'public/homes#top'
