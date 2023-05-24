@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+
+    <h4>注文情報入力</h4>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col">
+      <p>支払方法</p>
+      <%= form_with model:@order, url:orders_confirmation_path, method: :post do |f| %>
+        <%= f.radio_button:payment_method,"credit_card", checked: true %>
+        <%= f.label:payment_method_credit_card,"クレジットカード" %><br>
+        <%= f.radio_button:payment_method,"transfer" %>
+        <%= f.label:payment_method_transfer,"銀行振り込み" %>
+
+
+      <p>お届け先</p>
+        〒<%= @order.postal_code %><%= @order.address %><br>
+          <%= @order.addressee %>
+
+      <div class="row justify-content-center">
+        <%= f.submit "確認画面へ進む", class:"btn btn-primary" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
