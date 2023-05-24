@@ -1,7 +1,7 @@
 <div class="container">
     <div>
       <h4>管理者ログイン</h4>
-      
+
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="offset-3">
         <div class="field row mb-3">
@@ -14,10 +14,10 @@
           <%= f.password_field :password, autocomplete: "current-password", class:"col-4" %>
         </div>
 
-        <div class="actions d-grid offset-2">
+        <div class="offset-2">
           <%= f.submit "ログイン", class:"btn btn-primary" %>
         </div>
-      </div>  
+      </div>
       <% end %>
     </div>
 </div>

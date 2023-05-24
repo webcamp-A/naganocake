@@ -1,6 +1,7 @@
 class Item < ApplicationRecord
   has_one_attached :image
   has_many :cart_items, dependent: :destroy
+  has_many :order_detail
   
   validates :price, presence: true
   
@@ -13,6 +14,6 @@ class Item < ApplicationRecord
   end
   
   def add_tax_price
-    price*1.10
+    (price*1.1).floor
   end
 end

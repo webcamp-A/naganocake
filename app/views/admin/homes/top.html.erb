@@ -1,20 +1,24 @@
 <div class="container">
 
-  <h4>admin 注文履歴一覧</h4>
-  <table>
+  <h4>注文履歴一覧</h4>
+  <table class="table">
     <thead>
-      <tr>
+      <tr bgcolor="#f4f4f4">
         <th scope="col">購入日時</th>
         <th scope="col">購入者</th>
         <th scope="col">注文個数</th>
       </tr>
     </thead>
     <tbody>
+      <% @order.each do |order| %>
       <tr>
-        <% @homes.each do |home| %>
-        <td></td>
-        <% end 
+        <td><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(order.id) %></td>
+        <td><%= order.addressee %></td>
+        <td><%= order.order_details.sum(:quantity) %></td>
       </tr>
+      <% end %>
     </tbody>
   </table>
+  <%= paginate @order %>
+
 </div>

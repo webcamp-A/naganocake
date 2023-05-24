@@ -47,12 +47,10 @@
   <div class="row">
     <label class="col-2">会員ステータス</label>
     <div class="col-4">
-      
+      <%= @customer.is_deleted ? '退会':'有効' %>
     </div>
   </div>
-  <%= link_to edit_admin_customer_path(@customer.id) do %>
-    <div class="offset-2 col-1 btn btn-success">編集する</div>
-  <% end %>
-  <div class="offset-1 col- btn btn-primary">注文履歴一覧を見る</div>
+  <%= link_to "編集する", edit_admin_customer_path(@customer.id), class:"btn btn-success" %>
+  <%= link_to "注文履歴一覧を見る", admin_path, class:"btn btn-primary" %>
 
 </div>
