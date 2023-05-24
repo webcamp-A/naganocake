@@ -6,11 +6,93 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <header class="shadow-sm">
+      
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <a class="navbar-brand p-3" href="/">ながのCAKE</a>
+          <div class="pt-1 pb-1">
+            <% if customer_signed_in? %>
+              <div class="align-items-center">ようこそ、<%= current_customer.last_name %>さん！</div>
+            <% end %>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+        
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+            <% if admin_signed_in? %>
+              <% if request.fullpath.include? "/admin" %>
+                <li class="nav-item btn btn-outline-secondary text-nowrap mr-2">
+                  <%= link_to "商品一覧", admin_items_path %>
+                </li>
+                <li class="nav-item btn btn-outline-secondary mr-2">
+                  <%= link_to "会員一覧", admin_customers_path %>
+                </li>
+                <li class="nav-item btn btn-outline-secondary mr-2">
+                  <%= link_to "注文履歴一覧", admin_path %>
+                </li>
+                <li class="nav-item btn btn-outline-secondary">
+                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+                </li>
+              <% else %>
+                <li class="nav-item btn btn-outline-secondary mr-2">
+                  <%= link_to "マイページ", customer_path(current_customer) %>
+                </li>
+                <li class="nav-item btn btn-outline-secondary mr-2">
+                  <%= link_to "商品一覧", items_path %>
+                </li>
+                <li class="nav-item btn btn-outline-secondary mr-2">
+                  <%= link_to "カート", cart_items_path %>
+                </li>
+                <li class="nav-item btn btn-outline-secondary">
+                  <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+                </li>
+              <% end %>
+
+            <% elsif customer_signed_in? %>
+              <li class="nav-item btn btn-outline-secondary mr-2">
+                <%= link_to "マイページ", customer_path(current_customer) %>
+              </li>
+              <li class="nav-item btn btn-outline-secondary mr-2">
+                <%= link_to "商品一覧", items_path %>
+              </li>
+              <li class="nav-item btn btn-outline-secondary mr-2">
+                <%= link_to "カート", cart_items_path %>
+              </li>
+              <li class="nav-item btn btn-outline-secondary">
+                <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+              </li>
+            <% else %>
+              <li class="nav-item btn btn-outline-secondary mr-2">
+                <%= link_to "About", about_path %>
+              </li>
+              <li class="nav-item btn btn-outline-secondary mr-2">
+                <%= link_to "商品一覧", items_path %>
+              </li>
+              <li class="nav-item btn btn-outline-secondary mr-2">
+                <%= link_to "新規登録", new_customer_registration_path %>
+              </li>
+              <li class="nav-item btn btn-outline-secondary">
+                <%= link_to "ログイン", new_customer_session_path %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main class="mt-3">
+      <%= yield %>
+    </main>
+    <footer class="bg-dark text-white pt-5 pb-4">
+    </footer>
+
   </body>
 </html>
