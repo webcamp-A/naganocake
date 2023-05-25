@@ -26,9 +26,10 @@ Rails.application.routes.draw do
     get 'completion' => 'orders#completion'
     
     patch 'customers/out' => 'customers#out', as: 'out'
-    resources :customers, except:[:index]
+    resources :customers, except:[:show,:index,:edit]
     
-    get 'customers' => 'customers#show'
+    get 'my_page' => 'customers#show'
+    get 'customers/information/edit' => 'customers#edit'
     get 'withdrawal' => 'customers#withdrawal'
     
   

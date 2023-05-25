@@ -11,8 +11,8 @@
     <div class="d-inline-flex flex-row">
       <% @items.each do |item| %>
       <div class="col-3">
-        <%= image_tag item.get_image,size:"200x150" %><br>
         <%= link_to item_path(item.id) do %>
+          <%= image_tag item.get_image,size:"200x150" %><br>
           <%= item.name %><br>
         <% end %>
         ￥<%= item.price %>

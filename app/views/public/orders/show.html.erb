@@ -33,7 +33,7 @@
         <tbody>
           <tr>
             <th bgcolor="#f4f4f4",scope="col-1">商品合計</th>
-            <td scope="col-1"><%= @order.payment %></td>
+            <td scope="col-1"><%= @order.payment - 800 %></td>
           </tr>
           <tr>
             <th bgcolor="#f4f4f4",scope="col-1">配送料</th>
@@ -41,7 +41,7 @@
           </tr>
           <tr>
             <th bgcolor="#f4f4f4",scope="col-1">ご請求額</th>
-            <td scope="col-1"><%= @order.payment + @order.postage %></td>
+            <td scope="col-1"><%= @order.payment  %></td>
           </tr>
         </tbody>
       </table>
